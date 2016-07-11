@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class CalendarActivity extends AppCompatActivity
 
         //TODO 設定topBar的year,month文字的大小,左右箭頭的大小
         setTopBarYearMonthSize();
+        setArrowSize();
 
     }
 
@@ -98,5 +100,25 @@ public class CalendarActivity extends AppCompatActivity
 
         topBarMonthTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,monthTextSize);
         topBarYearTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,yearTextSize);
+    }
+
+    private void setArrowSize()
+    {
+        ImageView arrowLeft = (ImageView)findViewById(R.id.ArrowLeft);
+        ImageView arrowRight = (ImageView)findViewById(R.id.ArrowRight);
+
+        int commonWidth = (int)(topBarHeight/3*2);
+        int commonHeight = (int)(topBarHeight/2);
+
+        ViewGroup.LayoutParams paramsLeft = arrowLeft.getLayoutParams();
+        paramsLeft.height = commonHeight;
+        paramsLeft.width = commonWidth;
+
+        ViewGroup.LayoutParams paramsRight = arrowRight.getLayoutParams();
+        paramsRight.height = commonHeight;
+        paramsRight.width = commonWidth;
+
+        arrowLeft.setLayoutParams(paramsLeft);
+        arrowRight.setLayoutParams(paramsRight);
     }
 }
