@@ -30,7 +30,7 @@ public class CalendarActivity extends AppCompatActivity
 
         Log.d("CalendarLog","This is Calendar Activity");
 
-        //TODO 需要取得的數值1:螢幕長寬,statusBar的height,useHeight
+        //TODO 需要取得的數值:螢幕長寬,statusBar的height,useHeight
         getScreenSize();
         getStatusBarHeight();
         useHeight = screenHeight - statusBarHeight;

@@ -73,13 +73,62 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/TopBar"
-        android:layout_centerHorizontal="true"
         android:id="@+id/CalendarView"
-        android:background="#0080FF">
+        android:layout_below="@+id/TopBar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#A0A0A0">
 
-    </RelativeLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/CalendarRowDefault">
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#E0E0E0"
+                android:id="@+id/Sunday"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#101010"
+                android:id="@+id/Monday" />
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#E0E0E0"
+                android:id="@+id/Tuesday" />
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#101010"
+                android:id="@+id/Wednesday" />
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#E0E0E0"
+                android:id="@+id/Thursday" />
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#101010"
+                android:id="@+id/Friday" />
+
+            <RelativeLayout
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:background="#E0E0E0"
+                android:id="@+id/Saturday" />
+        </TableRow>
+    </TableLayout>
+
 </RelativeLayout>
