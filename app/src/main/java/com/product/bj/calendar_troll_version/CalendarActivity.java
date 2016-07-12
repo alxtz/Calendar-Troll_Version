@@ -22,6 +22,11 @@ public class CalendarActivity extends AppCompatActivity
     int topBarHeight;
     int calendarViewHeight;
 
+    //TODO calendarView的各項數值
+    int dayBlockCommonWidth;
+    int defaultRowHeight;
+    int dayBlockCommonHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -42,6 +47,10 @@ public class CalendarActivity extends AppCompatActivity
         //TODO 設定topBar的year,month文字的大小,左右箭頭的大小
         setTopBarYearMonthSize();
         setArrowSize();
+
+        //TODO 設定calendarView每個row,block的width,height
+        setDefaultRowWidthHeight();
+        setCalendarRowHeight();
 
     }
 
@@ -120,5 +129,84 @@ public class CalendarActivity extends AppCompatActivity
 
         arrowLeft.setLayoutParams(paramsLeft);
         arrowRight.setLayoutParams(paramsRight);
+    }
+
+    private void setDefaultRowWidthHeight()
+    {
+        int commonWidth = (int)(screenWidth/7); //前面6個dayBlock都使用commonWidth
+        int commonHeight = (int)(calendarViewHeight*0.055);
+
+        RelativeLayout sundayDayBlock = (RelativeLayout)findViewById(R.id.Sunday);
+        ViewGroup.LayoutParams params1 = sundayDayBlock.getLayoutParams();
+        params1.width = commonWidth;
+        params1.height = commonHeight;
+        sundayDayBlock.setLayoutParams(params1);
+
+        RelativeLayout mondayDayBlock = (RelativeLayout)findViewById(R.id.Monday);
+        ViewGroup.LayoutParams params2 = mondayDayBlock.getLayoutParams();
+        params2.width = commonWidth;
+        params2.height = commonHeight;
+        mondayDayBlock.setLayoutParams(params1);
+
+        RelativeLayout tuesdayDayBlock = (RelativeLayout)findViewById(R.id.Tuesday);
+        ViewGroup.LayoutParams params3 = tuesdayDayBlock.getLayoutParams();
+        params3.width = commonWidth;
+        params3.height = commonHeight;
+        tuesdayDayBlock.setLayoutParams(params3);
+
+        RelativeLayout wednesdayDayBlock = (RelativeLayout)findViewById(R.id.Wednesday);
+        ViewGroup.LayoutParams params4 = wednesdayDayBlock.getLayoutParams();
+        params4.width = commonWidth;
+        params4.height = commonHeight;
+        wednesdayDayBlock.setLayoutParams(params4);
+
+        RelativeLayout thursdayDayBlock = (RelativeLayout)findViewById(R.id.Thursday);
+        ViewGroup.LayoutParams params5 = thursdayDayBlock.getLayoutParams();
+        params5.width = commonWidth;
+        params5.height = commonHeight;
+        thursdayDayBlock.setLayoutParams(params5);
+
+        RelativeLayout fridayDayBlock = (RelativeLayout)findViewById(R.id.Friday);
+        ViewGroup.LayoutParams params6 = fridayDayBlock.getLayoutParams();
+        params6.width = commonWidth;
+        params6.height = commonHeight;
+        fridayDayBlock.setLayoutParams(params6);
+
+        RelativeLayout saturdayDayBlock = (RelativeLayout)findViewById(R.id.Saturday);
+        ViewGroup.LayoutParams params7 = saturdayDayBlock.getLayoutParams();
+        params7.width = screenWidth - commonWidth*6;
+        params7.height = commonHeight;
+        saturdayDayBlock.setLayoutParams(params7);
+
+        dayBlockCommonWidth = commonWidth;
+        defaultRowHeight = commonHeight;
+    }
+
+    private void setCalendarRowHeight()
+    {
+        int commonHeight = (int)(calendarViewHeight*0.945/6);
+        dayBlockCommonHeight = commonHeight;
+
+        String IDfoo;
+
+        for(int i=1; i<=35; ++i)
+        {
+            IDfoo = "DayBlock"+Integer.toString(i);
+            int resID = getResources().getIdentifier(IDfoo,"id",getPackageName());
+            RelativeLayout dayBlock = (RelativeLayout)findViewById(resID);
+            ViewGroup.LayoutParams dayBlockParams = dayBlock.getLayoutParams();
+            dayBlockParams.height = commonHeight;
+        }
+
+        commonHeight = calendarViewHeight - defaultRowHeight - dayBlockCommonHeight*5;
+
+        for(int i=36; i<=42; ++i)
+        {
+            IDfoo = "DayBlock"+Integer.toString(i);
+            int resID = getResources().getIdentifier(IDfoo,"id",getPackageName());
+            RelativeLayout dayBlock = (RelativeLayout)findViewById(resID);
+            ViewGroup.LayoutParams dayBlockParams = dayBlock.getLayoutParams();
+            dayBlockParams.height = commonHeight;
+        }
     }
 }
